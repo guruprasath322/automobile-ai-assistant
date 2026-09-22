@@ -1,0 +1,9 @@
+dtc,description,category,severity,causes,recommendation
+P0300,Random/Multiple Cylinder Misfire Detected,Engine,HIGH,"Spark plugs, Ignition coils, Fuel injectors","Inspect ignition and fuel system"
+P0301,Cylinder 1 Misfire Detected,Engine,HIGH,"Spark plug 1, Ignition coil 1, Fuel injector 1","Check Cylinder 1 ignition components"
+P0420,Catalyst System Efficiency Below Threshold,Exhaust,MEDIUM,"Catalytic converter, Oxygen sensor, Exhaust leak","Inspect catalytic converter and O2 sensors"
+P0171,System Too Lean (Bank 1),Fuel,MEDIUM,"Vacuum leak, Dirty MAF sensor, Fuel pump","Check for vacuum leaks and clean MAF sensor"
+P0117,Engine Coolant Temperature Circuit Low,Cooling,HIGH,"Coolant sensor, Thermostat, Low coolant","Check coolant level and sensor wiring"
+P0562,System Voltage Low,Electrical,MEDIUM,"Weak battery, Failing alternator, Loose cables","Test battery and alternator output"
+P0101,Mass Air Flow Circuit Range/Performance,Sensors,LOW,"Dirty MAF sensor, Intake leak","Clean MAF sensor with specialized cleaner"
+P0507,Idle Control System RPM Higher Than Expected,Engine,LOW,"Vacuum leak, Dirty throttle body","Clean throttle body and check for air leaks"
