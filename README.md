@@ -1,5 +1,10 @@
 # AI Automobile Health & Diagnosis Assistant 🚗🤖
 
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-FF4B4B.svg)](https://streamlit.io/)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-F7931E.svg)](https://scikit-learn.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A comprehensive AI/ML-powered decision-support system for vehicle health monitoring and fault diagnosis. This project is designed as a prototype for educational and college-level demonstrations (B.Tech AIML).
 
 ## 🌟 Overview
@@ -54,7 +59,11 @@ automobile-ai-assistant/
 
 ## ⚙️ Installation & Setup
 
-1. **Clone the project** or copy the files to your local machine.
+1. **Clone the project**:
+   ```bash
+   git clone https://github.com/guruprasath-s-b/automobile-ai-assistant.git
+   cd automobile-ai-assistant
+   ```
 2. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
@@ -81,12 +90,14 @@ automobile-ai-assistant/
 
 This application is a **decision-support prototype** for educational purposes only. It is NOT a replacement for a professional mechanical diagnosis. Always consult a qualified technician for critical vehicle issues. Never ignore dashboard warning lights or unusual vehicle behavior.
 
-## 🎓 College Project Info
+## 🎓 Project Info
 
 - **Domain**: Artificial Intelligence & Machine Learning
 - **Algorithm**: Random Forest Classifier
 - **Accuracy**: ~90%
 - **Dataset**: Synthetic Automobile Fault Dataset (1,500 records)
+- **Author**: [GURUPRASATH S B](https://github.com/guruprasath-s-b)
 
 ---
-Developed by **Manus AI** as a beginner-friendly, modular project template.
+Developed for AI/ML Vehicle Health & Diagnostics.
+
