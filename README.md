@@ -1,5 +1,6 @@
 # AI Automobile Health & Diagnosis Assistant 🚗🤖
 
+[![CI](https://github.com/guruprasath-s-b/automobile-ai-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/guruprasath-s-b/automobile-ai-assistant/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-FF4B4B.svg)](https://streamlit.io/)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-F7931E.svg)](https://scikit-learn.org/)
@@ -52,6 +53,7 @@ automobile-ai-assistant/
 │   ├── database.py           # SQLite helper script
 │   └── automobile_assistant.db # Persistent database file
 ├── reports/                  # Generated PDF reports
+├── tests/                    # Automated unit test suite
 ├── voice/                    # Voice processing logic
 ├── utils/                    # Health score & helper utilities
 └── docs/                     # Step-by-step phase documentation
@@ -68,11 +70,15 @@ automobile-ai-assistant/
    ```bash
    pip install -r requirements.txt
    ```
-3. **Train the ML Model** (optional, pre-trained model included):
+3. **Run Unit Tests**:
+   ```bash
+   python3 -m unittest discover -s tests -p "test_*.py"
+   ```
+4. **Train the ML Model** (optional, pre-trained model included):
    ```bash
    python3 ml/train_model.py
    ```
-4. **Run the Application**:
+5. **Run the Application**:
    ```bash
    streamlit run app.py
    ```
