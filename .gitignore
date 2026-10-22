@@ -44,3 +44,13 @@ env/
 .Trashes
 ehthumbs.db
 Thumbs.db
+# Test and generated reports
+reports/*.pdf
+!reports/.gitkeep
+generated_images/
+
+# Build artifacts & presentations
+.codex-finalizer/
+.codex_ppt_build/
+*.mjs
+

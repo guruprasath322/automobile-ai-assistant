@@ -1,10 +1,13 @@
-import speech_recognition as sr
+try:
+    import speech_recognition as sr
+except ImportError:
+    sr = None
 
 def transcribe_speech():
     """
     Attempt to transcribe speech from the microphone.
     Note: This requires a working microphone and PyAudio installed.
-    For the Streamlit web app, we will use a text-based fallback if mic is unavailable.
+    For the web app, we use browser Web Speech API with text-based fallback.
     """
     recognizer = sr.Recognizer()
     try:

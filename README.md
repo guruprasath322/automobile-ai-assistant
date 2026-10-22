@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/guruprasath-s-b/automobile-ai-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/guruprasath-s-b/automobile-ai-assistant/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-FF4B4B.svg)](https://streamlit.io/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg)](https://fastapi.tiangolo.com/)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-F7931E.svg)](https://scikit-learn.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -15,29 +15,32 @@ The **AI Automobile Health & Diagnosis Assistant** bridges the gap between compl
 ## 🚀 Key Features
 
 - **🤖 AI-Powered Diagnosis**: Uses Random Forest and Decision Tree models to predict vehicle faults with confidence scores.
-- **📡 OBD-II Monitor**: Live simulation of engine metrics (RPM, Temperature, Voltage, Speed) and DTC (Diagnostic Trouble Code) detection.
+- **📡 OBD-II Monitor**: Live simulation of engine metrics (RPM, Temperature, Voltage, Speed) and DTC (Diagnostic Trouble Code) detection with animated SVG instruments.
 - **📊 Vehicle Health Score**: A dynamic 0-100 score based on real-time sensor data and historical diagnosis.
-- **🎤 Voice Assistant**: Natural language symptom extraction from user descriptions.
+- **🎤 Voice Assistant**: Browser Web Speech API & natural language symptom extraction from spoken/typed descriptions.
 - **📋 Persistent History**: SQLite database integration to track vehicle profiles and diagnosis history across sessions.
 - **📄 Professional Reports**: Instant PDF report generation for every diagnosis.
 - **🔧 Maintenance Reminders**: Smart alerts based on vehicle mileage and service history.
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: Streamlit (Python-based web framework)
-- **Backend**: Python 3.10+
+- **Frontend**: Modern HTML5, Responsive Vanilla CSS (Obsidian Dark Glassmorphism), Vanilla JavaScript (SPA)
+- **Backend**: FastAPI & Uvicorn (Asynchronous REST API)
 - **Machine Learning**: Scikit-learn (Random Forest, Decision Tree), Pandas, NumPy
 - **Database**: SQLite
 - **Reporting**: ReportLab (PDF Generation)
-- **Voice**: SpeechRecognition (Keyword Extraction)
-- **Visualization**: Plotly, Matplotlib
+- **Voice**: Web Speech API & Keyword NLP extraction
 
 ## 📂 Project Structure
 
 ```text
 automobile-ai-assistant/
-├── app.py                    # Main Streamlit application
+├── app.py                    # Main FastAPI application server & REST API
 ├── requirements.txt          # Project dependencies
+├── static/                   # Modern web frontend SPA
+│   ├── index.html            # Single Page Application HTML
+│   ├── css/style.css         # Cyber-obsidian design system & animations
+│   └── js/app.js             # Real-time state & API communication
 ├── data/
 │   ├── dataset.csv           # Synthetic training dataset
 │   └── dtc_codes.csv         # DTC lookup database
@@ -54,6 +57,8 @@ automobile-ai-assistant/
 │   └── automobile_assistant.db # Persistent database file
 ├── reports/                  # Generated PDF reports
 ├── tests/                    # Automated unit test suite
+│   ├── test_assistant.py     # Domain logic unit tests
+│   └── test_api.py           # REST API endpoint tests
 ├── voice/                    # Voice processing logic
 ├── utils/                    # Health score & helper utilities
 └── docs/                     # Step-by-step phase documentation
@@ -78,10 +83,11 @@ automobile-ai-assistant/
    ```bash
    python3 ml/train_model.py
    ```
-5. **Run the Application**:
+5. **Run the Web Application**:
    ```bash
-   streamlit run app.py
+   python3 app.py
    ```
+   Open your browser and navigate to: `http://localhost:8000`
 
 ## 🧪 Usage Workflow
 

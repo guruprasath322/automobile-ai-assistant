@@ -89,6 +89,14 @@ class AutomobileDB:
         conn.close()
         return df
 
+    def delete_vehicle(self, registration_number):
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM vehicles WHERE registration_number = ?", (registration_number,))
+        cursor.execute("DELETE FROM diagnosis_history WHERE vehicle_reg = ?", (registration_number,))
+        conn.commit()
+        conn.close()
+
     # --- Diagnosis Operations ---
     
     def save_diagnosis(self, diagnosis_record):

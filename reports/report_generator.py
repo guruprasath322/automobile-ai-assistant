@@ -37,11 +37,13 @@ def generate_pdf_report(vehicle_info, diagnosis_result, output_path):
 
     # Diagnosis Results Section
     elements.append(Paragraph("Diagnosis Results", styles['Heading2']))
+    symptoms_val = diagnosis_result.get('symptoms', [])
+    symptoms_text = ", ".join(symptoms_val) if isinstance(symptoms_val, list) else str(symptoms_val or 'None reported')
     d_data = [
-        ["Predicted Fault", diagnosis_result['fault']],
-        ["Confidence", f"{diagnosis_result['confidence']}%"],
-        ["Severity", diagnosis_result['severity']],
-        ["Symptoms", ", ".join(diagnosis_result['symptoms'])]
+        ["Predicted Fault", str(diagnosis_result.get('fault', 'Unknown'))],
+        ["Confidence", f"{diagnosis_result.get('confidence', 0)}%"],
+        ["Severity", str(diagnosis_result.get('severity', 'LOW'))],
+        ["Symptoms", symptoms_text]
     ]
     d_table = Table(d_data, colWidths=[150, 300])
     d_table.setStyle(TableStyle([

@@ -32,13 +32,13 @@ The proposed system uses a **Random Forest Classifier** to analyze a combination
 2. **Preprocessing**: Feature engineering of categorical symptoms and normalization of sensor data (RPM, Temp, Voltage).
 3. **Model Selection**: Comparison between Decision Tree and Random Forest classifiers.
 4. **Training**: Supervised learning using an 80/20 train-test split.
-5. **Integration**: Embedding the trained model into a Streamlit web application.
+5. **Integration**: Embedding the trained model into a high-performance web application with FastAPI REST API.
 6. **Persistence**: Implementation of a relational database (SQLite) for data lifecycle management.
 
 ## 6. System Architecture
 The system follows a modular architecture:
-- **Presentation Layer**: Streamlit UI for user interaction.
-- **Logic Layer**: Python scripts for ML inference, OBD simulation, and voice processing.
+- **Presentation Layer**: Modern responsive web portal (HTML5 / Vanilla CSS / JavaScript Single-Page Application).
+- **Service Layer**: Asynchronous FastAPI REST API for ML inference, OBD simulation, and voice processing.
 - **Data Layer**: SQLite database for history and CSV files for DTC/Dataset storage.
 - **External Integration**: ReportLab for PDF generation and Google Speech API for transcription.
 

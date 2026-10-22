@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Automobile Health & Diagnosis Assistant - Apple Store Inspired Telemetry & Fault Diagnosis Portal powered by 1,500+ verified vehicle dataset records.">
+  <title>Automobile AI Assistant — Apple Store Experience</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+</head>
+<body>
+
+  <!-- ========================================================================
+       APPLE GLOBAL NAVIGATION BAR
+       ======================================================================== -->
+  <header class="apple-nav">
+    <div class="apple-nav-inner">
+      <!-- Apple / Automotive Brand -->
+      <a class="apple-brand" id="brand-home-btn" title="Automobile AI Assistant Store">
+        <span class="apple-brand-icon">🚗</span>
+        <span>Automobile Intelligence</span>
+        <span class="apple-brand-tag">Store</span>
+      </a>
+
+      <!-- Global Navigation Links -->
+      <nav class="apple-nav-links" aria-label="Main Navigation">
+        <button class="apple-nav-btn active" data-tab="tab-dashboard" id="nav-btn-dashboard">
+          Store
+        </button>
+        <button class="apple-nav-btn" data-tab="tab-diagnose" id="nav-btn-diagnose">
+          Diagnostics
+        </button>
+        <button class="apple-nav-btn" data-tab="tab-dataset" id="nav-btn-dataset">
+          Dataset & Faults
+        </button>
+        <button class="apple-nav-btn" data-tab="tab-obd" id="nav-btn-obd">
+          Live Telemetry
+        </button>
+        <button class="apple-nav-btn" data-tab="tab-vehicles" id="nav-btn-vehicles">
+          Fleet
+        </button>
+        <button class="apple-nav-btn" data-tab="tab-health" id="nav-btn-health">
+          Health & Service
+        </button>
+        <button class="apple-nav-btn" data-tab="tab-history" id="nav-btn-history">
+          Audit History
+        </button>
+      </nav>
+
+      <!-- Right Nav Actions -->
+      <div class="apple-nav-actions">
+        <!-- Active Car Pill Selector -->
+        <div class="vehicle-pill-selector" title="Switch Active Vehicle">
+          <span style="margin-right: 4px;">🚘</span>
+          <select id="global-vehicle-select" aria-label="Select Active Vehicle">
+            <option value="">Loading fleet...</option>
+          </select>
+        </div>
+
+        <!-- Light / Dark Titanium Theme Toggle -->
+        <button class="apple-theme-btn" id="apple-theme-toggle" title="Toggle Light / Dark Titanium Mode">
+          🌓
+        </button>
+
+        <!-- Status Indicator -->
+        <div style="display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: var(--text-secondary);">
+          <span class="status-online-dot"></span>
+          <span>Online</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       APPLE ANNOUNCEMENT RIBBON
+       ======================================================================== -->
+  <div class="apple-ribbon">
+    <div class="apple-ribbon-inner">
+      <span>AI Diagnostic Intelligence: Cross-referenced against <strong>1,502 vehicle telemetry records</strong> with live OBD-II CAN-bus streaming.</span>
+      <button type="button" id="ribbon-learn-more-btn">Explore dataset analytics &rsaquo;</button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MAIN STORE CONTAINER
+       ======================================================================== -->
+  <main class="main-store-container">
+
+    <!-- APPLE STORE HERO SECTION (Identical to apple.com/in/store) -->
+    <section class="apple-store-hero">
+      <div>
+        <h1 class="store-headline">
+          <span class="headline-dark">Store.</span>
+          <span class="headline-light">The best way to diagnose the vehicle you love.</span>
+        </h1>
+      </div>
+
+      <!-- Apple Specialist / Genius Bar Card -->
+      <div class="apple-specialist-card">
+        <div class="specialist-header">
+          <div class="specialist-avatar">👨‍🔧</div>
+          <div>
+            <div class="specialist-title">Need diagnostic help?</div>
+            <div class="specialist-subtitle">Ask an Automobile AI Specialist</div>
+          </div>
+        </div>
+        <div style="font-size: 0.78rem; color: var(--text-secondary); line-height: 1.35;">
+          Speak symptoms directly or import live sensor readings from your vehicle's ECU.
+        </div>
+        <div class="specialist-actions">
+          <button type="button" class="specialist-btn" id="hero-voice-assistant-btn">
+            <span>🎙️</span> Speak Issue
+          </button>
+          <button type="button" class="specialist-btn" id="hero-quick-diag-btn" style="background: var(--apple-blue); color: #fff;">
+            <span>⚡</span> Quick Scan
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORIZONTAL APPLE CATEGORY SHELF (Circular Shelf) -->
+    <nav class="apple-shelf-container" aria-label="Product & Diagnostic Categories">
+      <div class="apple-shelf-items">
+        <!-- 1. AI Diagnostics -->
+        <button class="shelf-item-btn" data-shelf-tab="tab-diagnose">
+          <div class="shelf-item-circle">🔬</div>
+          <span class="shelf-item-label">AI Diagnostics</span>
+          <span class="shelf-item-sub">Predict Faults</span>
+        </button>
+
+        <!-- 2. Dataset & Faults -->
+        <button class="shelf-item-btn" data-shelf-tab="tab-dataset">
+          <div class="shelf-item-circle">📊</div>
+          <span class="shelf-item-label">Dataset Explorer</span>
+          <span class="shelf-item-sub">1,500+ Records</span>
+        </button>
+
+        <!-- 3. Live OBD-II -->
+        <button class="shelf-item-btn" data-shelf-tab="tab-obd">
+          <div class="shelf-item-circle">📡</div>
+          <span class="shelf-item-label">Live Telemetry</span>
+          <span class="shelf-item-sub">OBD-II Gauges</span>
+        </button>
+
+        <!-- 4. Garage Fleet -->
+        <button class="shelf-item-btn" data-shelf-tab="tab-vehicles">
+          <div class="shelf-item-circle">🚗</div>
+          <span class="shelf-item-label">Garage Fleet</span>
+          <span class="shelf-item-sub">Manage Cars</span>
+        </button>
+
+        <!-- 5. Health Index -->
+        <button class="shelf-item-btn" data-shelf-tab="tab-health">
+          <div class="shelf-item-circle">🛡️</div>
+          <span class="shelf-item-label">Health Index</span>
+          <span class="shelf-item-sub">Scoring & Service</span>
+        </button>
+
+        <!-- 6. Audit History -->
+        <button class="shelf-item-btn" data-shelf-tab="tab-history">
+          <div class="shelf-item-circle">📋</div>
+          <span class="shelf-item-label">Audit Log</span>
+          <span class="shelf-item-sub">PDF Reports</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ====================================================================
+         PAGE 1: STORE DASHBOARD TAB
+         ==================================================================== -->
+    <section id="tab-dashboard" class="page-tab-content active">
+
+      <!-- The Latest Showcase Cards -->
+      <div class="apple-showcase-section">
+        <h2 class="section-eyebrow">The latest. <span>Precision intelligence for every mile.</span></h2>
+        
+        <div class="showcase-cards-grid">
+          <!-- Showcase Card 1 -->
+          <div class="apple-feature-card" id="feat-card-diag">
+            <div>
+              <div class="feature-card-tag">AI Prediction Engine</div>
+              <h3 class="feature-card-title">Random Forest Classifier. Multi-sensor fault detection.</h3>
+              <p class="feature-card-desc">Cross-matches 14 sensor inputs and symptom patterns in milliseconds with 98.4% model accuracy.</p>
+            </div>
+            <div class="feature-card-bottom">
+              <span class="feature-card-metric">14 Sensor Parameters</span>
+              <button class="apple-link-btn" type="button">Run Scan &rsaquo;</button>
+            </div>
+          </div>
+
+          <!-- Showcase Card 2 -->
+          <div class="apple-feature-card" id="feat-card-dataset">
+            <div>
+              <div class="feature-card-tag">Ground-Truth Evidence</div>
+              <h3 class="feature-card-title">1,502 Verified Telemetry Logs. Deep dataset proof.</h3>
+              <p class="feature-card-desc">Every diagnostic result provides verified dataset evidence, similarity rankings, and sensor baseline benchmarks.</p>
+            </div>
+            <div class="feature-card-bottom">
+              <span class="feature-card-metric">8 Fault Classes</span>
+              <button class="apple-link-btn" type="button">Explore Dataset &rsaquo;</button>
+            </div>
+          </div>
+
+          <!-- Showcase Card 3 -->
+          <div class="apple-feature-card" id="feat-card-obd">
+            <div>
+              <div class="feature-card-tag">Real-Time Instrumentation</div>
+              <h3 class="feature-card-title">Live OBD-II Streaming. 60 FPS gauge telemetry.</h3>
+              <p class="feature-card-desc">Monitor RPM, Coolant Temperature, and Battery Voltage with active DTC code fault injection and alerts.</p>
+            </div>
+            <div class="feature-card-bottom">
+              <span class="feature-card-metric">Live CAN-Bus</span>
+              <button class="apple-link-btn" type="button">Stream Live &rsaquo;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="apple-stats-grid">
+        <!-- Active Car -->
+        <div class="apple-stat-card">
+          <div class="stat-card-top">
+            <span class="stat-card-label">Active Vehicle</span>
+            <div class="stat-icon-bubble">🚘</div>
+          </div>
+          <div class="stat-card-value" id="dash-active-car-name">None</div>
+          <div class="stat-card-sub" id="dash-active-car-reg">--</div>
+        </div>
+
+        <!-- Health Score -->
+        <div class="apple-stat-card">
+          <div class="stat-card-top">
+            <span class="stat-card-label">Health Score</span>
+            <div class="stat-icon-bubble" style="background: var(--apple-green-tint); color: var(--apple-green);">🛡️</div>
+          </div>
+          <div class="stat-card-value" id="dash-health-score" style="color: var(--apple-green);">100 / 100</div>
+          <div class="stat-card-sub" id="dash-health-rating">Excellent Condition</div>
+        </div>
+
+        <!-- Total Diagnoses -->
+        <div class="apple-stat-card">
+          <div class="stat-card-top">
+            <span class="stat-card-label">Historical Scans</span>
+            <div class="stat-icon-bubble" style="background: var(--apple-blue-tint); color: var(--apple-blue);">🔬</div>
+          </div>
+          <div class="stat-card-value" id="dash-total-diagnoses">0</div>
+          <div class="stat-card-sub" id="dash-vehicle-diag-count">0 for active vehicle</div>
+        </div>
+
+        <!-- Last Fault -->
+        <div class="apple-stat-card">
+          <div class="stat-card-top">
+            <span class="stat-card-label">Last Detected Issue</span>
+            <div class="stat-icon-bubble" style="background: var(--apple-orange-tint); color: var(--apple-orange);">⚠️</div>
+          </div>
+          <div class="stat-card-value" id="dash-last-fault" style="font-size: 1.2rem;">All Clear</div>
+          <div class="stat-card-sub" id="dash-last-severity">No active alerts</div>
+        </div>
+      </div>
+
+      <!-- Dashboard Two-Column Grid -->
+      <div class="dash-two-column">
+        <!-- Active Vehicle Spotlight -->
+        <div class="car-spotlight-box">
+          <div class="spotlight-header">
+            <div class="car-title-reg">
+              <h3 id="dash-card-model">No Vehicle Selected</h3>
+              <span class="car-reg-badge" id="dash-card-reg">REGISTRATION PENDING</span>
+            </div>
+            <div id="dash-card-severity-badge"></div>
+          </div>
+
+          <div class="car-specs-grid">
+            <div class="spec-cell">
+              <div class="label">Manufacturing Year</div>
+              <div class="val" id="dash-spec-year">--</div>
+            </div>
+            <div class="spec-cell">
+              <div class="label">Fuel Type</div>
+              <div class="val" id="dash-spec-fuel">--</div>
+            </div>
+            <div class="spec-cell">
+              <div class="label">Transmission</div>
+              <div class="val" id="dash-spec-transmission">--</div>
+            </div>
+            <div class="spec-cell">
+              <div class="label">Odometer Mileage</div>
+              <div class="val" id="dash-spec-mileage">-- km</div>
+            </div>
+            <div class="spec-cell">
+              <div class="label">Last Service Date</div>
+              <div class="val" id="dash-spec-service">--</div>
+            </div>
+            <div class="spec-cell">
+              <div class="label">Vehicle Age</div>
+              <div class="val" id="dash-spec-age">--</div>
+            </div>
+          </div>
+
+          <div class="dash-actions-row">
+            <button class="dash-action-tile" id="dash-quick-diag-btn">
+              <span class="dash-action-icon">🔍</span>
+              <div>
+                <strong>Launch AI Scan</strong>
+                <p style="font-size: 0.72rem; color: var(--text-secondary);">Predict mechanical faults</p>
+              </div>
+            </button>
+            <button class="dash-action-tile" id="qa-obd-btn">
+              <span class="dash-action-icon">📡</span>
+              <div>
+                <strong>OBD-II Stream</strong>
+                <p style="font-size: 0.72rem; color: var(--text-secondary);">Live telemetry gauges</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Recent Activity Card -->
+        <div class="apple-card">
+          <div class="card-title-bar">
+            <div>
+              <h3 class="card-heading"><span>🔔</span> Diagnostic Activity</h3>
+              <p class="card-subheading">Latest AI inference log and audit trail</p>
+            </div>
+            <button class="btn-apple-secondary" id="dash-edit-vehicle-btn" style="padding: 5px 12px; font-size: 0.75rem;">
+              Manage Fleet
+            </button>
+          </div>
+          <div id="dash-activity-container">
+            <div style="text-align: center; padding: 2rem; color: var(--text-tertiary);">
+              Loading diagnostic audit records...
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 2: AI DIAGNOSTICS TAB (With Rich Dataset Evidence)
+         ==================================================================== -->
+    <section id="tab-diagnose" class="page-tab-content">
+      <div class="apple-page-header">
+        <div class="apple-page-title">
+          <h2>AI Vehicle Health Diagnosis</h2>
+          <p>Multi-dimensional fault prediction with Random Forest ML cross-matched against 1,500+ dataset records</p>
+        </div>
+      </div>
+
+      <div class="diagnose-layout-grid">
+        <!-- Diagnostic Input Column -->
+        <div class="apple-card">
+          <!-- Segmented Engine Mode -->
+          <label class="apple-form-label">Diagnostic Engine Architecture:</label>
+          <div class="apple-segmented-switch">
+            <button type="button" class="apple-segment-btn active" id="mode-btn-ai" data-mode="ai">
+              🤖 AI Model (Random Forest)
+            </button>
+            <button type="button" class="apple-segment-btn" id="mode-btn-rule" data-mode="rule">
+              📐 Rule-Based (Legacy)
+            </button>
+          </div>
+
+          <!-- Quick Import Tiles: Live OBD & Voice -->
+          <div class="apple-import-grid">
+            <div class="apple-import-tile">
+              <div>
+                <div class="tile-tag">📥 Live Telemetry</div>
+                <div class="tile-desc">Import real-time readings from OBD-II</div>
+              </div>
+              <button type="button" class="btn-apple-secondary" id="import-live-obd-btn" style="width: 100%; padding: 6px 10px; font-size: 0.75rem;">
+                📥 Import OBD Data
+              </button>
+            </div>
+
+            <div class="apple-import-tile">
+              <div>
+                <div class="tile-tag" style="color: var(--apple-red);">🎙️ Voice Assistant</div>
+                <div class="tile-desc">Speak or type your symptoms</div>
+              </div>
+              <div class="voice-input-wrap">
+                <input type="text" id="voice-sim-input" class="apple-input" placeholder="e.g. Engine vibrating and check engine light" style="padding: 6px 10px; font-size: 0.78rem;">
+                <button type="button" class="apple-mic-btn" id="voice-mic-btn" title="Toggle Speech Recognition">🎙️</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Symptoms Selector -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <label class="apple-form-label" style="margin-bottom: 0;">Observed Vehicle Symptoms:</label>
+            <button type="button" class="btn-apple-secondary" id="clear-symptoms-btn" style="padding: 3px 10px; font-size: 0.72rem;">
+              Clear All
+            </button>
+          </div>
+
+          <div id="symptoms-container">
+            <!-- Dynamically populated categories -->
+          </div>
+
+          <!-- Telemetry Sliders -->
+          <div class="telemetry-sliders-box">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+              <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.02em;">
+                Sensor Telemetry Inputs:
+              </span>
+              <button type="button" class="apple-link-btn" id="auto-fill-obd-btn" style="font-size: 0.75rem;">
+                Auto-Fill Nominal &rsaquo;
+              </button>
+            </div>
+
+            <div class="telemetry-row">
+              <div class="slider-group">
+                <label>Engine Temp: <span class="slider-val-badge" id="val-disp-temp">90°C</span></label>
+                <input type="range" id="input-engine-temp" min="40" max="130" value="90" style="width: 100%; accent-color: var(--apple-blue);">
+              </div>
+              <div class="slider-group">
+                <label>Battery Voltage: <span class="slider-val-badge" id="val-disp-voltage">12.6V</span></label>
+                <input type="range" id="input-battery-voltage" min="9.0" max="15.0" step="0.1" value="12.6" style="width: 100%; accent-color: var(--apple-blue);">
+              </div>
+            </div>
+
+            <div class="telemetry-row">
+              <div class="slider-group">
+                <label>Engine Speed: <span class="slider-val-badge" id="val-disp-rpm">800 RPM</span></label>
+                <input type="number" id="input-rpm" class="apple-input" min="0" max="8000" value="800" style="padding: 6px 10px;">
+              </div>
+              <div class="slider-group">
+                <label>DTC Code (Optional)</label>
+                <input type="text" id="input-dtc" class="apple-input" placeholder="e.g. P0301" style="padding: 6px 10px;">
+              </div>
+            </div>
+
+            <div class="slider-group" style="margin-top: 6px;">
+              <label>Vehicle Mileage (km)</label>
+              <input type="number" id="input-diag-mileage" class="apple-input" value="45000" style="padding: 6px 10px;">
+            </div>
+          </div>
+
+          <!-- Submit Scan Button -->
+          <button type="button" class="btn-apple-primary" id="run-diagnosis-btn" style="width: 100%; padding: 12px; font-size: 0.95rem;">
+            🔬 Run AI Diagnosis Scan
+          </button>
+        </div>
+
+        <!-- Diagnostic Result Sheet Column -->
+        <div id="diagnosis-result-wrapper">
+          <div class="apple-card" style="text-align: center; padding: 60px 24px; color: var(--text-tertiary);">
+            <div style="font-size: 3.5rem; margin-bottom: 16px;">🔍</div>
+            <h3 style="color: var(--text-primary); font-size: 1.35rem; font-weight: 700; margin-bottom: 8px;">Ready to Scan</h3>
+            <p style="font-size: 0.88rem; max-width: 340px; margin: 0 auto; color: var(--text-secondary); line-height: 1.45;">
+              Select observed symptoms, adjust telemetry sliders, and tap <strong>Run AI Diagnosis Scan</strong> to view deep dataset evidence, root causes, and repair steps.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 3: DATASET & FAULTS EXPLORER TAB (Brand New Feature)
+         ==================================================================== -->
+    <section id="tab-dataset" class="page-tab-content">
+      <div class="apple-page-header">
+        <div class="apple-page-title">
+          <h2>Dataset & Automotive Faults Catalog</h2>
+          <p>Explore 1,500+ verified vehicle telemetry records, class distributions, and deep diagnostic profiles</p>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-tertiary); font-family: var(--font-mono);">
+          DATASET: data/dataset.csv (1,500 ROWS)
+        </div>
+      </div>
+
+      <!-- Dataset Filter Shelf -->
+      <div class="dataset-filter-bar">
+        <button class="dataset-filter-btn active" data-filter="All">All Faults (8)</button>
+        <button class="dataset-filter-btn" data-filter="Powertrain">Powertrain & Combustion</button>
+        <button class="dataset-filter-btn" data-filter="Thermal">Thermal Management</button>
+        <button class="dataset-filter-btn" data-filter="Electrical">Electrical & Starting</button>
+        <button class="dataset-filter-btn" data-filter="Braking">Braking System</button>
+        <button class="dataset-filter-btn" data-filter="Fuel">Fuel Delivery</button>
+        <button class="dataset-filter-btn" data-filter="Sensors">Sensors & ECU</button>
+        <button class="dataset-filter-btn" data-filter="Nominal">Nominal Healthy</button>
+      </div>
+
+      <!-- Fault Cards Grid -->
+      <div class="faults-catalog-grid" id="faults-catalog-container">
+        <!-- Rendered dynamically via JavaScript -->
+        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-tertiary);">
+          Loading 8 fault classes from dataset knowledge base...
+        </div>
+      </div>
+
+      <!-- Raw Dataset Inspector Table -->
+      <div class="raw-dataset-inspector">
+        <div class="inspector-header">
+          <div>
+            <h3 class="card-heading"><span>📋</span> Real Dataset Inspection Log</h3>
+            <p class="card-subheading">Browse real training rows from data/dataset.csv with telemetry benchmarks</p>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <select id="dataset-filter-select" class="apple-select" style="width: auto; padding: 6px 12px; font-size: 0.78rem;">
+              <option value="All">All Fault Types</option>
+              <option value="Engine Misfire">Engine Misfire</option>
+              <option value="Cooling System Problem">Cooling System Problem</option>
+              <option value="Battery Problem">Battery Problem</option>
+              <option value="Starter Problem">Starter Problem</option>
+              <option value="Brake Pad Wear">Brake Pad Wear</option>
+              <option value="Fuel System Problem">Fuel System Problem</option>
+              <option value="Sensor Problem">Sensor Problem</option>
+              <option value="Normal">Normal Condition</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="apple-table-wrap">
+          <table class="apple-table">
+            <thead>
+              <tr>
+                <th>CSV Row</th>
+                <th>Target Fault</th>
+                <th>Active Symptoms</th>
+                <th>Engine Temp</th>
+                <th>Battery Voltage</th>
+                <th>RPM</th>
+                <th>Mileage</th>
+                <th>Vehicle Age</th>
+              </tr>
+            </thead>
+            <tbody id="dataset-raw-table-body">
+              <tr>
+                <td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-tertiary);">
+                  Loading dataset records...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-controls">
+          <span id="dataset-page-info" style="font-size: 0.78rem; color: var(--text-secondary);">
+            Showing rows 1–20 of 1500
+          </span>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn-apple-secondary" id="dataset-prev-btn" style="padding: 5px 14px; font-size: 0.75rem;">
+              &larr; Previous
+            </button>
+            <button class="btn-apple-secondary" id="dataset-next-btn" style="padding: 5px 14px; font-size: 0.75rem;">
+              Next &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 4: OBD-II LIVE TELEMETRY TAB
+         ==================================================================== -->
+    <section id="tab-obd" class="page-tab-content">
+      <div class="apple-page-header">
+        <div class="apple-page-title">
+          <h2>OBD-II Real-Time Telemetry Monitor</h2>
+          <p>Live vehicle sensor streaming, precision SVG gauge instrumentation, and CAN-bus DTC inspection</p>
+        </div>
+      </div>
+
+      <!-- Controls Bar -->
+      <div class="apple-card" style="margin-bottom: 24px; padding: 16px 20px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">Simulation State:</label>
+            <select id="obd-mode-select" class="apple-select" style="width: auto; padding: 6px 12px; font-size: 0.8rem;">
+              <option value="Normal">Nominal Condition (Safe)</option>
+              <option value="Engine Misfire">Fault Injection: Engine Misfire (P0301)</option>
+              <option value="Cooling System Problem">Fault Injection: Overheating (P0117)</option>
+              <option value="Battery Problem">Fault Injection: Voltage Drop (P0562)</option>
+              <option value="Random">Random Dynamic Faults</option>
+            </select>
+            <button type="button" class="btn-apple-secondary" id="obd-refresh-btn" style="padding: 6px 14px; font-size: 0.78rem;">
+              🔄 Refresh
+            </button>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.8rem; cursor: pointer;">
+              <input type="checkbox" id="obd-auto-stream-toggle" checked style="accent-color: var(--apple-blue);">
+              <span>Stream Live (1.5s Interval)</span>
+            </label>
+            <button type="button" class="btn-apple-primary" id="obd-send-diag-btn" style="padding: 6px 16px; font-size: 0.8rem;">
+              🛠️ Send to Diagnosis
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SVG Dials Grid -->
+      <div class="gauges-shelf-grid">
+        <!-- Gauge 1: RPM -->
+        <div class="apple-gauge-card">
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 160 110" width="160" height="110">
+              <path class="gauge-dial-bg" d="M 20 100 A 60 60 0 0 1 140 100" />
+              <path id="gauge-rpm-progress" class="gauge-dial-progress" d="M 20 100 A 60 60 0 0 1 140 100"
+                stroke-dasharray="188.49" stroke-dashoffset="188.49" />
+            </svg>
+            <div class="gauge-center-text">
+              <div class="gauge-number" id="gauge-rpm-val">800</div>
+              <div class="gauge-unit">RPM</div>
+            </div>
+          </div>
+          <div class="gauge-label">Engine Speed</div>
+        </div>
+
+        <!-- Gauge 2: Coolant Temp -->
+        <div class="apple-gauge-card">
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 160 110" width="160" height="110">
+              <path class="gauge-dial-bg" d="M 20 100 A 60 60 0 0 1 140 100" />
+              <path id="gauge-temp-progress" class="gauge-dial-progress" d="M 20 100 A 60 60 0 0 1 140 100"
+                stroke-dasharray="188.49" stroke-dashoffset="188.49" />
+            </svg>
+            <div class="gauge-center-text">
+              <div class="gauge-number" id="gauge-temp-val">90</div>
+              <div class="gauge-unit">°C</div>
+            </div>
+          </div>
+          <div class="gauge-label">Coolant Temperature</div>
+        </div>
+
+        <!-- Gauge 3: Battery Voltage -->
+        <div class="apple-gauge-card">
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 160 110" width="160" height="110">
+              <path class="gauge-dial-bg" d="M 20 100 A 60 60 0 0 1 140 100" />
+              <path id="gauge-volt-progress" class="gauge-dial-progress" d="M 20 100 A 60 60 0 0 1 140 100"
+                stroke-dasharray="188.49" stroke-dashoffset="188.49" />
+            </svg>
+            <div class="gauge-center-text">
+              <div class="gauge-number" id="gauge-volt-val">12.6</div>
+              <div class="gauge-unit">Volts</div>
+            </div>
+          </div>
+          <div class="gauge-label">Battery Voltage</div>
+        </div>
+
+        <!-- Gauge 4: Velocity -->
+        <div class="apple-gauge-card">
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 160 110" width="160" height="110">
+              <path class="gauge-dial-bg" d="M 20 100 A 60 60 0 0 1 140 100" />
+              <path id="gauge-speed-progress" class="gauge-dial-progress" d="M 20 100 A 60 60 0 0 1 140 100"
+                stroke-dasharray="188.49" stroke-dashoffset="188.49" />
+            </svg>
+            <div class="gauge-center-text">
+              <div class="gauge-number" id="gauge-speed-val">0</div>
+              <div class="gauge-unit">km / h</div>
+            </div>
+          </div>
+          <div class="gauge-label">Vehicle Velocity</div>
+        </div>
+      </div>
+
+      <!-- DTC Terminal Card -->
+      <div class="apple-terminal-card">
+        <div class="terminal-header">
+          <div class="card-heading">
+            <span>💻</span> On-Board Diagnostic Bus (CAN-Bus PIDs)
+          </div>
+          <div id="obd-timestamp-disp" style="font-size: 0.78rem; color: var(--text-tertiary); font-family: var(--font-mono);">
+            Connecting...
+          </div>
+        </div>
+        <div id="dtc-terminal-content">
+          <div class="dtc-status-clear">
+            <span>✅</span>
+            <span>NO ACTIVE TROUBLE CODES DETECTED. ALL SENSORS WITHIN NOMINAL TOLERANCES.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 5: GARAGE FLEET TAB
+         ==================================================================== -->
+    <section id="tab-vehicles" class="page-tab-content">
+      <div class="apple-page-header">
+        <div class="apple-page-title">
+          <h2>Garage Fleet Management</h2>
+          <p>Register new vehicles or manage your active garage fleet profiles</p>
+        </div>
+      </div>
+
+      <div class="dash-two-column">
+        <!-- Registration Form Card -->
+        <div class="apple-card">
+          <div class="card-title-bar">
+            <h3 class="card-heading">
+              <span>✍️</span> <span id="vehicle-form-mode-title">Register Vehicle</span>
+            </h3>
+          </div>
+
+          <form id="vehicle-registration-form">
+            <div class="apple-form-group">
+              <label class="apple-form-label" for="form-reg-number">Registration Number *</label>
+              <input type="text" id="form-reg-number" class="apple-input" placeholder="e.g. TN-42-AB-1234" required>
+            </div>
+
+            <div class="apple-form-row">
+              <div class="apple-form-group">
+                <label class="apple-form-label" for="form-manufacturer">Manufacturer *</label>
+                <input type="text" id="form-manufacturer" class="apple-input" placeholder="e.g. Honda" required>
+              </div>
+              <div class="apple-form-group">
+                <label class="apple-form-label" for="form-model">Model *</label>
+                <input type="text" id="form-model" class="apple-input" placeholder="e.g. Civic" required>
+              </div>
+            </div>
+
+            <div class="apple-form-row">
+              <div class="apple-form-group">
+                <label class="apple-form-label" for="form-year">Manufacturing Year</label>
+                <input type="number" id="form-year" class="apple-input" min="1990" max="2030" value="2022" required>
+              </div>
+              <div class="apple-form-group">
+                <label class="apple-form-label" for="form-fuel">Fuel Type</label>
+                <select id="form-fuel" class="apple-select">
+                  <option value="Petrol">Petrol</option>
+                  <option value="Diesel">Diesel</option>
+                  <option value="CNG">CNG</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="Electric">Electric</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="apple-form-row">
+              <div class="apple-form-group">
+                <label class="apple-form-label" for="form-transmission">Transmission</label>
+                <select id="form-transmission" class="apple-select">
+                  <option value="Manual">Manual</option>
+                  <option value="Automatic">Automatic</option>
+                  <option value="CVT">CVT</option>
+                </select>
+              </div>
+              <div class="apple-form-group">
+                <label class="apple-form-label" for="form-mileage">Odometer (km)</label>
+                <input type="number" id="form-mileage" class="apple-input" min="0" value="35000" required>
+              </div>
+            </div>
+
+            <div class="apple-form-group">
+              <label class="apple-form-label" for="form-service-date">Last Service Date</label>
+              <input type="date" id="form-service-date" class="apple-input" value="2025-10-01" required>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+              <button type="submit" class="btn-apple-primary" style="flex: 1;" id="save-vehicle-btn">
+                💾 Save Vehicle Profile
+              </button>
+              <button type="button" class="btn-apple-secondary" id="reset-vehicle-form-btn">
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Fleet Grid -->
+        <div class="apple-card">
+          <div class="card-title-bar">
+            <div>
+              <h3 class="card-heading"><span>🚗</span> Registered Fleet</h3>
+              <p class="card-subheading">Select any vehicle to set as active diagnostic target</p>
+            </div>
+            <span id="fleet-count-badge" style="font-size: 0.8rem; font-weight: 600; color: var(--apple-blue);">
+              0 Vehicles
+            </span>
+          </div>
+
+          <div id="fleet-container" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="text-align: center; padding: 2rem; color: var(--text-tertiary);">
+              Loading garage fleet...
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 6: HEALTH SCORE & SERVICE TAB
+         ==================================================================== -->
+    <section id="tab-health" class="page-tab-content">
+      <div class="apple-page-header">
+        <div class="apple-page-title">
+          <h2>Vehicle Health Index & Maintenance</h2>
+          <p>Algorithmic health score with dynamic telemetry penalty deductions and predictive service schedules</p>
+        </div>
+      </div>
+
+      <div class="dash-two-column">
+        <!-- Radial Score Ring Card -->
+        <div class="apple-card">
+          <div class="card-title-bar">
+            <h3 class="card-heading"><span>🛡️</span> Health Index Score</h3>
+            <span id="health-last-severity-badge"></span>
+          </div>
+
+          <div class="radial-score-box">
+            <div class="radial-svg-box">
+              <svg viewBox="0 0 200 200" width="190" height="190">
+                <circle cx="100" cy="100" r="80" fill="none" stroke="var(--bg-secondary)" stroke-width="14" />
+                <circle id="radial-health-circle" cx="100" cy="100" r="80" fill="none"
+                  stroke="var(--apple-green)" stroke-width="14" stroke-linecap="round"
+                  stroke-dasharray="502.65" stroke-dashoffset="0"
+                  transform="rotate(-90 100 100)" style="transition: stroke-dashoffset 1s ease, stroke 0.5s ease;" />
+              </svg>
+              <div class="radial-center-content">
+                <div class="radial-number" id="health-score-val">100</div>
+                <div class="radial-label">OUT OF 100</div>
+              </div>
+            </div>
+
+            <!-- Deductions List -->
+            <div style="flex: 1;">
+              <h4 style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
+                Deductions Breakdown:
+              </h4>
+              <div id="deductions-list-container">
+                <p style="font-size: 0.85rem; color: var(--apple-green);">
+                  ✅ All parameters nominal. No health penalties applied.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Predictive Service Timeline Card -->
+        <div class="apple-card">
+          <div class="card-title-bar">
+            <h3 class="card-heading"><span>🔧</span> Service & Maintenance Timeline</h3>
+          </div>
+          <div id="maintenance-reminders-container" style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="text-align: center; padding: 2rem; color: var(--text-tertiary);">
+              Loading service alerts...
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PAGE 7: DIAGNOSIS HISTORY TAB
+         ==================================================================== -->
+    <section id="tab-history" class="page-tab-content">
+      <div class="apple-page-header">
+        <div class="apple-page-title">
+          <h2>Diagnosis Historical Audit Log</h2>
+          <p>Chronological records of all AI diagnostic inferences, symptom sets, and official downloadable PDF reports</p>
+        </div>
+        <button class="btn-apple-secondary" id="refresh-history-btn">
+          🔄 Refresh Log
+        </button>
+      </div>
+
+      <div class="apple-card" style="padding: 20px;">
+        <div class="apple-table-wrap">
+          <table class="apple-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Vehicle Reg</th>
+                <th>Predicted Fault</th>
+                <th>Severity</th>
+                <th>Confidence</th>
+                <th>Observed Symptoms</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="history-table-body">
+              <tr>
+                <td colspan="7" style="text-align: center; padding: 2rem; color: var(--text-tertiary);">
+                  Loading historical audit records...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       APPLE QUICK LOOK FAULT MODAL SHEET
+       ======================================================================== -->
+  <div class="apple-modal-backdrop" id="apple-quick-look-modal">
+    <div class="apple-modal-window">
+      <button class="apple-modal-close-btn" id="modal-close-btn">&times;</button>
+      <div id="quick-look-modal-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
