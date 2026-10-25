@@ -23,6 +23,7 @@ from obd.simulator import OBDSimulator
 from voice.speech import extract_symptoms_from_text
 from reports.report_generator import generate_pdf_report
 from utils.helpers import calculate_health_score
+from utils.maintenance import generate_maintenance_checklist
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 STATIC_DIR = PROJECT_ROOT / "static"
@@ -566,6 +567,31 @@ def get_vehicle_health_score(vehicle_reg: Optional[str] = None):
         "reminders": reminders,
         "last_severity": last_severity,
         "telemetry_used": telemetry
+    }
+
+
+@app.get("/api/maintenance/checklist")
+def get_maintenance_checklist(vehicle_reg: Optional[str] = None):
+    """Return maintenance actions for the specified or active vehicle."""
+    reg = vehicle_reg or get_active_vehicle_reg()
+    if not reg:
+        return {"vehicle": None, "checklist": []}
+
+    vehicle = db.get_vehicle(reg)
+    if not vehicle:
+        raise HTTPException(status_code=404, detail="Vehicle not found")
+
+    telemetry = obd.get_live_data(fault_mode="Normal")
+    checklist = generate_maintenance_checklist(
+        mileage=vehicle.get("current_mileage", 0),
+        engine_temp=telemetry["Engine Temperature"],
+        battery_voltage=telemetry["Battery Voltage"],
+        last_service_date=vehicle.get("last_service_date"),
+    )
+    return {
+        "vehicle": vehicle,
+        "checklist": checklist,
+        "telemetry_used": telemetry,
     }
 
 

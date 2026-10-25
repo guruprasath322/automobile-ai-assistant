@@ -131,6 +131,15 @@ class TestAutomobileAPI(unittest.TestCase):
         self.assertIn("deductions", data)
         self.assertIn("reminders", data)
 
+    def test_maintenance_checklist_endpoint(self):
+        """Test prioritized maintenance recommendations."""
+        response = self.client.get("/api/maintenance/checklist?vehicle_reg=TEST-REG-9999")
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertEqual(data["vehicle"]["registration_number"], "TEST-REG-9999")
+        self.assertIn("checklist", data)
+        self.assertIsInstance(data["checklist"], list)
+
     def test_dashboard_stats(self):
         """Test high-level dashboard aggregate metrics."""
         response = self.client.get("/api/stats")

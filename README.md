@@ -21,6 +21,7 @@ The **AI Automobile Health & Diagnosis Assistant** bridges the gap between compl
 - **📋 Persistent History**: SQLite database integration to track vehicle profiles and diagnosis history across sessions.
 - **📄 Professional Reports**: Instant PDF report generation for every diagnosis.
 - **🔧 Maintenance Reminders**: Smart alerts based on vehicle mileage and service history.
+- **✅ Maintenance Checklist API**: Prioritized service actions based on live telemetry, mileage, and service age.
 
 ## 🛠️ Technology Stack
 
@@ -97,6 +98,7 @@ automobile-ai-assistant/
 4. **Analyze**: Review the AI prediction, confidence score, and severity level.
 5. **Report**: Download the PDF report for your records.
 6. **Health**: Check the "Vehicle Health" page for your 0-100 score and maintenance tips.
+7. **Checklist**: Call `GET /api/maintenance/checklist` to receive prioritized maintenance actions for the active vehicle.
 
 ## ⚠️ Safety Disclaimer
 
@@ -112,4 +114,3 @@ This application is a **decision-support prototype** for educational purposes on
 
 ---
 Developed for AI/ML Vehicle Health & Diagnostics.
-
