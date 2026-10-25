@@ -1,4 +1,4 @@
-# AI Automobile Health & Diagnosis Assistant 🚗🤖
+[# AI Automobile Health & Diagnosis Assistant 🚗🤖
 
 [![CI](https://github.com/guruprasath-s-b/automobile-ai-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/guruprasath-s-b/automobile-ai-assistant/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
@@ -114,3 +114,4 @@ This application is a **decision-support prototype** for educational purposes on
 
 ---
 Developed for AI/ML Vehicle Health & Diagnostics.
+](https://github.com/guruprasath322/automobile-ai-assistant)
